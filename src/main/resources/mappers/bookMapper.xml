@@ -1,0 +1,41 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.smart.board.dao.BookDao">
+    <select id="findAll" resultType="Book" parameterType="map">
+        SELECT * FROM (
+        SELECT rownum bnum, b.*
+        FROM (
+        SELECT * FROM book
+        WHERE
+        ${searchItem} LIKE '%' || #{searchWord} || '%'
+        ORDER BY booktitle DESC
+        ) b
+        ) WHERE bnum BETWEEN #{srow} and #{erow}
+    </select>
+
+    <!-- 책 페이지 등록 -->
+    <insert id="insert" parameterType="Book">
+        INSERT INTO book
+            bookseq, isbn, booktitle, writer, publisher, descrip, stock, bookphoto
+        VALUES
+            bookseq.nextval, #{isbn}, #{booktitle}, #{writer}, #{publisher}, #{descrip}, #{stock}, #{bookphoto}
+    </insert>
+
+    <select id="findOne" parameterType="Long" resultType="Board">
+        SELECT
+        bookseq, isbn, booktitle, writer, publisher, descrip, stock, bookphoto
+        FROM board
+        WHERE
+        bookseq = #{bookseq}
+    </select>
+
+    <!-- 전체 책 개수 조회 -->
+    <select id="getBookCount" parameterType="map" resultType="int">
+        SELECT count(*)
+        FROM book
+        WHERE
+        ${searchItem} LIKE '%' || #{searchWord} || '%'
+    </select>
+</mapper>
