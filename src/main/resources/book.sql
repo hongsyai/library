@@ -1,5 +1,10 @@
 drop table reservation;
 drop table book;
+drop sequence bookseq;
+drop sequence rv_seq;
+
+create sequence bookseq;
+create sequence rv_seq;
 
 CREATE TABLE book
 (
