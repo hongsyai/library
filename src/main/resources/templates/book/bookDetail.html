@@ -12,8 +12,7 @@
             display : block; }
 
     </style>
-    <script>
-    </script>
+    <script></script>
     <title>도서정보</title>
 </head>
 <body>
@@ -60,11 +59,11 @@
             <div class="info">
                 <ul>
                     <li style="line-height: 150%;">
-                        <h6 id="bookTitleInfo"><b th:text="${book.booktitle}">&nbsp;&nbsp;돈의 속성 : 최상위 부자가 말하는 돈에 대한 모든 것</b></h6>
+                        <h6 id="bookTitleInfo"><b>&nbsp;&nbsp;돈의 속성 : 최상위 부자가 말하는 돈에 대한 모든 것</b></h6>
                     </li>
-                    <li>&nbsp;&nbsp;저자 : 지은이: <b th:text="${book.writer}">Snowfox(스노우폭스북스)</b></li>
-                    <li>&nbsp;&nbsp;출판사 : <b th:text="${book.publisher}">Snowfox(스노우폭스북스)</b></li>
-                    <li>&nbsp;&nbsp;ISBN :  <b th:text="${book.isbn}">Snowfox(스노우폭스북스)</b></li>
+                    <li>&nbsp;&nbsp;저자 : 지은이: 김승호</li>
+                    <li>&nbsp;&nbsp;출판사 : Snowfox(스노우폭스북스), 2020</li>
+                    <li>&nbsp;&nbsp;ISBN : 9791188331796</li>
                 </ul>
             </div>
         </div>
@@ -89,26 +88,22 @@
             <tbody>
             <tr>
                 <th scope="row">강남도서관</th>
-                <td th:text="${book.bookseq}">bookseq</td>
-                <td th:if="${book.returnbook} == 1">대여가능(<b th:text="${book.stock}">22</b>개 남음)</td>
-                <td th:unless="${book.returnbook} == 1">대여불가능(<b th:text="${book.stock}"></b>개 남음)</td>
+                <td>bookseq</td>
+                <td>대여불가(3명 대여중)</td>
                 <td>
-                    <button type="button" class="btn btn-warning" th:if="${book.returnbook} == 1">대여</button>
-                    <button type="button" style="background-color:grey; color:white;" class="btn btn-warning" th:unless="${book.returnbook} == 1" disabled>대여</button>
+                    <button type="button" class="btn btn-warning">대여</button>
                 </td>
-
-
             </tr>
             </tbody>
         </table>
-        <button type="button" class="btn btn-outline-primary" id="goToList" onclick="location.href='/book/bookList';">목록으로</button>
+        <button type="button" class="btn btn-outline-primary" id="goToList">목록으로</button>
         <br>
         <br>
         <!--책 소개-->
         <h4><b>책 소개</b></h4>
         <hr>
-        <p th:text="${book.booktitle}">돈의 속성 - 김승호 지음</p>
-        <p th:text="${book.descrip}">어떤 횡재나 일명 대박주식 없이 말 그대로 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 부모에게 받은 유산은커녕, 30대 후반까지 낡은 자동차에 그날 판매할 과일을 싣고 다니던 어느
+        <p>돈의 속성 - 김승호 지음</p>
+        <p>어떤 횡재나 일명 대박주식 없이 말 그대로 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 부모에게 받은 유산은커녕, 30대 후반까지 낡은 자동차에 그날 판매할 과일을 싣고 다니던 어느
             가난한 이민 가장이 이룬 진짜 부에 대한 모든 방법이 담겼다.</p>
     </div>
 </body>
