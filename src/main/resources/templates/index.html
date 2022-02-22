@@ -47,16 +47,16 @@
     </script>
 </head>
 <body>
-<div class="btn-group">
-    <button sec:authorize="!isAuthenticated()" type="button" class="btn btn-primary" onclick="location.href='/account/loginForm';">로그인</button>
-    <button sec:authorize="!isAuthenticated()" type="button" class="btn btn-primary" onclick="location.href='/account/register';">회원가입</button>
-    <button sec:authorize="isAuthenticated()" type="button" class="btn btn-primary" onclick="location.href='/logout';">로그아웃</button>
+<div class="btn-group bg-light">
+    <button sec:authorize="!isAuthenticated()" type="button" class="btn btn-group" onclick="location.href='/account/loginForm';">로그인</button>
+    <button sec:authorize="!isAuthenticated()" type="button" class="btn btn-group" onclick="location.href='/account/register';">회원가입</button>
+    <button sec:authorize="isAuthenticated()" type="button" class="btn btn-group" onclick="location.href='/logout';">로그아웃</button>
 </div>
-<div class="container-fluid p-5 bg-primary text-white text-center">
+<div class="container-fluid p-5 bg-light text-dark text-center">
     <h1>HAPPY LIBRARY</h1>
     <p>WELCOME TO HAPPY LIBRARY!</p>
 </div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">

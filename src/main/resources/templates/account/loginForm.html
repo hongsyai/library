@@ -14,7 +14,7 @@
     <title>로그인 화면</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+<nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
     <div class="container-fluid">
         <a class="navbar-brand" href="/" >HAPPY LIBRARY</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -35,32 +35,32 @@
     </div>
 </nav>
 <br>
-<div class="container">
-    <!-- 에러 처리-->
-    <div class="row" th:if="${param.error}" style="color:red;">
-        * 아이디나 비밀번호가 잘못되었습니다.
-    </div>
-    <div class="row" th:if="${param.logout}" style="color:red;">
-        * 로그아웃되었습니다.
-    </div>
+<!-- <div class="container"> -->
+<!-- 에러 처리-->
+<div class="row" th:if="${param.error}" style="color:red;">
+    * 아이디나 비밀번호가 잘못되었습니다.
+</div>
+<div class="row" th:if="${param.logout}" style="color:red;">
+    * 로그아웃되었습니다.
+</div>
 
-    <!--로그인을 위한 화면-->
-    <form th:action="@{/account/login}" method="POST">
-        <div class="row">
-            <label for="usrid" class="col-sm-2 col-form-label">아이디</label>
-            <div class="col-sm-3">
-                <input type="text" class="form-control" id="usrid" name="usrid" placeholder="아이디를 입력해주세요">
-            </div>
+<!--로그인을 위한 화면-->
+<form th:action="@{/account/login}" method="POST">
+    <div class="row">
+        <label for="usrid" class="col-sm-2 col-form-label">아이디</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" id="usrid" name="usrid" placeholder="아이디를 입력해주세요">
         </div>
-        <div class="row">
-            <label for="usrpwd" class="col-sm-2 col-form-label">비밀번호</label>
-            <div class="col-sm-3">
-                <input type="password" class="form-control" id="usrpwd" name="usrpwd" placeholder="비밀번호를 입력해주세요">
-            </div>
+    </div>
+    <div class="row">
+        <label for="usrpwd" class="col-sm-2 col-form-label">비밀번호</label>
+        <div class="col-sm-3">
+            <input type="password" class="form-control" id="usrpwd" name="usrpwd" placeholder="비밀번호를 입력해주세요">
         </div>
-        &nbsp; &nbsp; &nbsp; &nbsp;
-        <input class="btn btn-primary" id="btn" type="submit" value="로그인">
-    </form>
+    </div>
+    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+    <input class="btn btn-dark" id="btn" type="submit" value="로그인">
+</form>
 </div>
 
 
