@@ -44,10 +44,6 @@ insert into book
 values
 (BOOKSEQ.nextval,55,'아Q정전','루', '아기새 출판','싸이코 아Q', 2);
 
-insert into reservation
-(rvseq, usrid, bookseq,returnbook)
-values
-(rv_seq.nextval, 'aaa', 41, 0);
 
 insert into book
 (bookseq, isbn, booktitle, writer, publisher, descrip, stock)

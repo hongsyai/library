@@ -51,14 +51,39 @@
             </div>
         </div>
         <div class="info">
-            <ul>
-                <li style="line-height: 150%;">
-                    <h6 id="bookTitleInfo"><b th:text="${book.booktitle}">&nbsp;&nbsp;돈의 속성 : 최상위 부자가 말하는 돈에 대한 모든 것</b></h6>
-                </li>
-                <li>&nbsp;&nbsp;저자 : 지은이: <b th:text="${book.writer}">Snowfox(스노우폭스북스)</b></li>
-                <li>&nbsp;&nbsp;출판사 : <b th:text="${book.publisher}">Snowfox(스노우폭스북스)</b></li>
-                <li>&nbsp;&nbsp;ISBN :  <b th:text="${book.isbn}">Snowfox(스노우폭스북스)</b></li>
-            </ul>
+            <form th:action="@{/reservation/rvWrite}" method="POST">
+                <input type="hidden" id="bookseq" name="bookseq" th:value="${book.bookseq}">
+                <ul>
+                    <li style="line-height: 150%;">
+                        <h6 id="bookTitleInfo"><b th:text="${book.booktitle}">&nbsp;&nbsp;돈의 속성 : 최상위 부자가 말하는 돈에 대한 모든 것</b></h6>
+                    </li>
+                    <li>&nbsp;&nbsp;저자 : 지은이: <b th:text="${book.writer}">Snowfox(스노우폭스북스)</b></li>
+                    <li>&nbsp;&nbsp;출판사 : <b th:text="${book.publisher}">Snowfox(스노우폭스북스)</b></li>
+                    <li>&nbsp;&nbsp;ISBN :  <b th:text="${book.isbn}">Snowfox(스노우폭스북스)</b></li>
+                    <li>
+                        <input type="date" id="datefield" name="rvStartDate" min="2021-07-20" max="2021-10-10" required>
+                    </li>
+                </ul>
+                <input type="submit" value="대여하기">대여하기</input>
+            </form>
+            <!-- 날짜 오늘부터 7일후까지-->
+            <script>
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+                var yyyy = today.getFullYear();
+                if(dd<10){
+                  dd='0'+dd
+                }
+                if(mm<10){
+                  mm='0'+mm
+                }
+                today2=today
+                today = yyyy+'-'+mm+'-'+dd;
+                document.getElementById("datefield").setAttribute("min", today);
+                today2=yyyy+'-'+mm+'-'+(dd+7);
+                document.getElementById("datefield").setAttribute("max", today2);
+	        </script>
         </div>
     </div>
 </div>

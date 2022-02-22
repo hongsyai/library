@@ -32,4 +32,8 @@
         FROM book b
         WHERE b.bookseq = #{bookseq}
     </select>
+    <update id="updateStock" parameterType="Reservation">
+        UPDATE book SET stock = stock-1
+        WHERE bookseq = #{bookseq}
+    </update>
 </mapper>

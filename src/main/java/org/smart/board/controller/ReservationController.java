@@ -1,13 +1,15 @@
 package org.smart.board.controller;
 
 import org.smart.board.entity.Book;
+import org.smart.board.entity.Reservation;
 import org.smart.board.service.BookService;
+import org.smart.board.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/reservation")
@@ -15,6 +17,9 @@ public class ReservationController {
 
     @Autowired
     BookService bookService;
+
+    @Autowired
+    ReservationService reservationService;
 
     @GetMapping("/reservationPage")
     public String reservationPage(Long bookseq, Model model){
@@ -31,4 +36,21 @@ public class ReservationController {
         }
         return "/reservation/reservationPage";
     }
+
+    @PostMapping("/rvWrite")
+    public String rvWrite(Reservation reservation, @AuthenticationPrincipal UserDetails user){
+        //아이디 꺼내오기
+
+        String loginId = user.getUsername();
+        reservation.setUsrid(loginId);
+
+        int result = reservationService.rvWrite(reservation);
+
+        int result2 = bookService.updateStock(reservation);
+
+
+
+        return "index";
+    }
+
 }
