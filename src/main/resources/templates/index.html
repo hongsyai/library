@@ -48,8 +48,9 @@
 </head>
 <body>
 <div class="btn-group">
-    <button type="button" class="btn btn-primary" onclick="location.href='/account/loginForm';">로그인</button>
-    <button type="button" class="btn btn-primary" onclick="location.href='/account/register';">회원가입</button>
+    <button sec:authorize="!isAuthenticated()" type="button" class="btn btn-primary" onclick="location.href='/account/loginForm';">로그인</button>
+    <button sec:authorize="!isAuthenticated()" type="button" class="btn btn-primary" onclick="location.href='/account/register';">회원가입</button>
+    <button sec:authorize="isAuthenticated()" type="button" class="btn btn-primary" onclick="location.href='/logout';">로그아웃</button>
 </div>
 <div class="container-fluid p-5 bg-primary text-white text-center">
     <h1>HAPPY LIBRARY</h1>

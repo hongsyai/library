@@ -50,6 +50,12 @@
             }
         }
     </script>
+    <style>
+        div.row {
+            margin: 20px auto 20px 40px;
+            padding: 0;
+        }
+    </style>
     <title>회원가입 화면</title>
 </head>
 <body>
@@ -61,11 +67,11 @@
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="javascript:void(0)">회원 가입</a>
-                </li>
                 <li>
                     <a class="nav-link" href="loginForm">로그인</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="javascript:void(0)">회원 가입</a>
                 </li>
             </ul>
         </div>
@@ -73,30 +79,26 @@
 </nav>
 <br>
 <form id="register" th:action="@{/account/register}" method="POST">
-    <div class="row mb-3">
-        &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="row">
         <label for="usrid" class="col-sm-2 col-form-label">아이디</label>
         <div class="col-sm-3">
             <span id="idCheck"></span>
             <input type="text" class="form-control" name="usrid" id="usrid" placeholder="아이디 입력" required>
         </div>
     </div>
-    <div class="row mb-3">
-        &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="row">
         <label for="usrpwd" class="col-sm-2 col-form-label">비밀번호</label>
         <div class="col-sm-3">
             <input type="password" class="form-control" name="usrpwd" id="usrpwd" placeholder="비밀번호 입력" required>
         </div>
     </div>
-    <div class="row mb-3">
-        &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="row">
         <label for="usrname" class="col-sm-2 col-form-label">이름</label>
         <div class="col-sm-3">
             <input type="text" class="form-control" name="usrname" id="usrname" placeholder="이름 입력" required>
         </div>
     </div>
-    <div class="row mb-3">
-        &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="row">
         <label for="email" class="col-sm-2 col-form-label">이메일</label>
         <div class="col-sm-3">
             <input type="email" class="form-control" name="email" id="email" placeholder="이메일 입력" required>
