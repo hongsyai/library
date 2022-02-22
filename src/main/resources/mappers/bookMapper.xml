@@ -27,11 +27,9 @@
 
     </select>
     <select id="findOne" resultType="Book" parameterType="Long">
-        SELECT b.bookseq as bookseq, b.isbn as isbn, b.booktitle as booktitle,
-            b.writer as writer, b.publisher as publisher, b.descrip as descrip,
-            b.stock as stock, b.bookphoto as bookphoto,
-            r.rvseq as rvseq, r.usrid as usrid, r.returnbook as returnbook
-        FROM book b, reservation r
+        SELECT
+            bookseq, isbn, booktitle, writer, publisher, descrip,stock,bookphoto
+        FROM book b
         WHERE b.bookseq = #{bookseq}
     </select>
 </mapper>
