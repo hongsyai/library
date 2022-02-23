@@ -13,7 +13,7 @@
         }
     </style>
   <script></script>
-  <title>회원정보</title>
+  <title>회원정보 수정</title>
 </head>
 <body>
 <!--상단-->
@@ -27,7 +27,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" th:href="@{/account/myInfo}"> 회원정보</a>
+          <a class="nav-link active" aria-current="page" href="#" th:href="@{/account/myInfoEdit}">회원정보 수정</a>
         </li>
       </ul>
     </div>
@@ -37,32 +37,39 @@
 <br>
 <!---->
 <div class="container mt-3">
-  <h2><b>회원정보</b></h2>
+  <h2><b>회원정보 수정</b></h2>
   <hr>
   <div class="container mt-3">
     <div class="card bg-light text-dark">
       <div class="card-body"><strong>개인 정보</strong></div>
     </div>
     <br>
-    <form th:action="@{/account/myInfoEdit}" method="POST">
-      <input type="hidden" name="usrid" th:value="${member.usrid}">
+  <form th:action="@{/account/myInfoEdit}" th:method="POST">
+
       <table class="table table-hover">
         <tr>
           <th scope="col">아이디</th>
-          <td scope="col" th:text="${member.usrid}">홍길동 테스트</td>
+          <td scope="col" >
+            <input type="text" th:value="${member.usrid}" name="usrid" readonly>
+          </td>
         </tr>
         <tr>
           <th scope="col">이름</th>
-          <td scope="col" th:text="${member.usrname}">홍길동</td>
+          <td scope="col" >
+            <input type="text" th:value="${member.usrname}" name="usrname">
+          </td>
         </tr>
         <tr>
           <th scope="col">이메일</th>
-          <td scope="col" th:text="${member.email}">hong@gmail.com</td>
+          <td scope="col" >
+            <input type="email" th:value="${member.email}" name="email">
+          </td>
         </tr>
       </table>
       <br>
-      <a class="btn btn-dark" href="#btn" th:href="@{/account/myInfoEdit(usrid=${member.usrid})}">회원정보 수정</a>&nbsp;
-    </form>
+      <input type="submit" class="btn btn-dark" value="수정" id="submit_btn">
+<!--      <button type="button" class="btn btn-dark" id="info_btn">수정</button>-->
+  </form>
   </div>
 </div>
 </body>

@@ -13,4 +13,12 @@
         SELECT * FROM "member"
         WHERE usrid = #{usrid}
     </select>
+    <update id="update" parameterType="Member">
+        UPDATE "member"
+        SET
+        usrname = #{usrname}
+        , email = #{email}
+        WHERE usrid = #{usrid}
+
+    </update>
  </mapper>
