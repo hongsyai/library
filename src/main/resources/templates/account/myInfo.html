@@ -18,7 +18,7 @@
 <!--상단-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">HAPPY LIBRARY</a>
+    <a class="navbar-brand"  href="#">HAPPY LIBRARY</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -26,10 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">홈</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">> 회원정보</a>
+          <a class="nav-link" href="#"> 회원정보</a>
         </li>
       </ul>
     </div>
@@ -50,19 +47,14 @@
     <table class="table table-hover">
       <tr>
         <th scope="col">아이디</th>
-        <td scope="col">gildongs</td>
+        <td scope="col" th:text="${member.usrid}">홍길동 테스트</td>
       </tr>
       <tr>
         <th scope="col">이름</th>
-        <td scope="col">홍길동</td>
-      </tr>
+        <td scope="col" th:text="${member.usrname}">홍길동</td>
       <tr>
         <th scope="col">이메일</th>
-        <td scope="col">hong@gmail.com</td>
-      </tr>
-      <tr>
-        <th scope="col">주소</th>
-        <td scope="col"></td>
+      <td scope="col" th:text="${member.email}">hong@gmail.com</td>
       </tr>
     </table>
     <br>

@@ -28,7 +28,9 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public Book findOne(Long bookseq) {
-        return bookDao.findOne(bookseq);
+        Book book = bookDao.findOne(bookseq);
+
+        return book;
     }
 
     @Override
@@ -37,4 +39,3 @@ public class BookServiceImpl implements BookService{
         return bookDao.updateStock(reservation);
     }
 }
-
