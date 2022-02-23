@@ -33,6 +33,7 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public int updateStock(Reservation reservation) {
+        System.out.println("북 업데이트 서비스 임플까진 왔다.");
         return bookDao.updateStock(reservation);
     }
 }

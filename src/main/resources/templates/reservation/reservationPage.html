@@ -62,6 +62,7 @@
                     <li>&nbsp;&nbsp;ISBN :  <b th:text="${book.isbn}">Snowfox(스노우폭스북스)</b></li>
                     <li>
                         <input type="date" id="datefield" name="rvStartDate" min="2021-07-20" max="2021-10-10" required>
+
                     </li>
                 </ul>
                 <input type="submit" value="대여하기">대여하기</input>
@@ -83,6 +84,7 @@
                 document.getElementById("datefield").setAttribute("min", today);
                 today2=yyyy+'-'+mm+'-'+(dd+7);
                 document.getElementById("datefield").setAttribute("max", today2);
+
 	        </script>
         </div>
     </div>

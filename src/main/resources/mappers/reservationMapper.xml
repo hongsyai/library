@@ -5,9 +5,9 @@
 <mapper namespace="org.smart.board.dao.ReservationDao">
     <insert id="rvWrite" parameterType="Reservation">
         INSERT INTO reservation
-        (rvseq, usrid, bookseq,rvStartDate)
+        (rvseq, usrid, bookseq,rvStartDate,rvEndDate)
         values
-        (rv_seq.nextval, #{usrid}, #{bookseq},#{rvStartDate})
+        (rv_seq.nextval, #{usrid}, #{bookseq},#{rvStartDate},to_date(#{rvStartDate})+5)
     </insert>
 </mapper>
 

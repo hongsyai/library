@@ -45,9 +45,9 @@ public class ReservationController {
         reservation.setUsrid(loginId);
 
         int result = reservationService.rvWrite(reservation);
-
+        System.out.println(result);
         int result2 = bookService.updateStock(reservation);
-
+        System.out.println("result2" + result2);
 
 
         return "index";
