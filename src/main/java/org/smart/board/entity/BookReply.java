@@ -12,7 +12,7 @@ public class BookReply {
     private Long bookreplyseq;
     private Long bookseq;
     private String usrid;
-    private String replytext;
+    private String bookreplytext;
     private int starcount;
     private String regdate;
 }

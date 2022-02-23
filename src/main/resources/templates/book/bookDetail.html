@@ -13,6 +13,137 @@
 
     </style>
 
+    <script th:inline="javascript" th:src="@{/script/jquery-3.6.0.min.js}"></script>
+
+    <script>
+        $(function(){
+            //$("#bookreplyUpdate").css('display', none);
+            $("#bookreplyWrite").on('click', bookreplyWrite);
+            $("#bookreplyUpdate").on('click', bookreplyUpdate);
+            init();
+        });
+
+        //ajax로 현재 게시글 번호에 달린 모든 댓글을 가지고 옴
+        function init(){
+
+            //타임리프라는 것을 알려주는 대괄호 2개 넣어주기
+            let bookseq = [[${book.bookseq}]]
+            let sendData = {"bookseq" : bookseq}
+
+            $.ajax({
+                url : '/bookreply/bookreplyList'
+                , method : 'POST'
+                , data : sendData
+                , success : output
+            })
+        }
+
+         // 출력하는 코드
+        function output(resp) {
+            let tag = '<table border="1">';
+
+            $.each(resp, function(index, item) {
+                tag += '<tr>';
+                tag += '    <td>' + item.bookreplyseq + '</td>';
+                tag += '    <td>' + item.usrid + '</td>';
+                tag += '    <td>' + item.bookreplytext + '</td>';
+                tag += '    <td>' + item.regdate + '</td>';
+                tag += '    <td><input type="button" value="삭제" class="delBtn" data-sno="' + item.bookreplyseq + '" >';
+                tag += '    <td><input type="button" value="수정" class="updateBtn" data-sno="' + item.bookreplyseq + '" >';
+                tag += '</tr>'
+            })
+            tag += '</table>';
+
+            $("#bookreplyDisplay").html(tag);
+            $(".delBtn").on('click', bookreplyDelete);
+            $(".updateBtn").on('click', bookreplyFind); //글을 찾아오는 작업부터 해야함
+        }
+
+        //댓글을 등록하는 함수
+        function bookreplyWrite() {
+            let bookseq = $("#bookseq").val();
+            let bookreplytext= $("#bookreplytext").val();
+
+            let sendData  = {"bookreplytext" : bookreplytext, "bookseq" : bookseq};
+
+            $.ajax({
+                url : '/bookreply/bookreplyWrite',
+                method : 'POST',
+                data : sendData,
+                success : function(resp){
+                    alert(resp);
+                    $("#bookreplytext").val();
+                    init(); //화면재출력
+                }
+            })
+        }
+        //댓글 삭제
+        function bookreplyDelete() {
+            //버튼을 눌렀을 떄 그 요소를 this
+            let bookreplyseq = $(this).attr('data-sno');
+            let bookseq = $("#bookseq").val();
+
+            let sendData = {"bookseq" : bookseq, "bookreplyseq" : bookreplyseq}
+
+            $.ajax({
+                url : '/bookreply/bookreplyDelete',
+                method: 'POST',
+                data : sendData,
+                success : function(resp){
+                    alert(resp);
+                    init();
+                }
+            })
+        }
+
+        //댓글 수정을 위한 조회
+        function bookreplyFind() {
+            let bookreplyseq = $(this).attr('data-sno');
+
+            $.ajax({
+                url : '/bookreply/bookreplyFind',
+                method : 'POST',
+                data : {"bookreplyseq" : bookreplyseq},
+                success : function(resp) {
+                    //resp가 object이기 때문에 바꿔줌
+                    alert(JSON.stringify(resp));
+                    if(resp !== ""){
+                        $("#bookreplytext").val(resp.bookreplytext);
+                        $("#bookreplytext").focus();
+                        $("#bookreplyWrite").css("display", "none");
+                        $("#bookreplyUpdate").css("display", "inline");
+
+                        seq = resp.bookreplyseq; //전역변수 seq에 고치려고 하는 댓글 번호를 저장
+                    } else {
+                        alert("자신이 쓴 댓글만 수정할 수 있습니다");
+                        return;
+                    }
+                }
+            })
+        }
+        //댓글을 수정하는 함수
+        function bookreplyUpdate(){
+            let bookreplyseq = seq;
+            let bookreplytext = $("#bookreplytext").val();
+
+            let sendData = {"bookreplyseq" : bookreplyseq, "bookreplytext" : bookreplytext}
+
+            $.ajax({
+                url : '/bookreply/bookreplyUpdate',
+                method : 'POST',
+                data : sendData,
+                success : function(resp){
+                    $("#bookreplyWrite").css("display", "inline");
+                    $("#bookreplyUpdate").css("display", "none" );
+                    $("#bookreplytext").val("");
+                    init();
+                }
+            })
+        }
+    </script>
+
+
+
     <script>
     </script>
     <title>도서정보</title>
@@ -110,6 +241,29 @@
         <p th:text="${book.booktitle}">돈의 속성 - 김승호 지음</p>
         <p th:text="${book.descrip}">어떤 횡재나 일명 대박주식 없이 말 그대로 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 부모에게 받은 유산은커녕, 30대 후반까지 낡은 자동차에 그날 판매할 과일을 싣고 다니던 어느
             가난한 이민 가장이 이룬 진짜 부에 대한 모든 방법이 담겼다.</p>
+
+
+
+        <div sec:authorize="isAuthenticated()"></div>
+        <form action="@{/bookreply/bookreplyWrite}" method="post">
+            <input type="hidden"  id="bookseq" name="bookseq" th:value="${book.bookseq}">
+            <!--로그인한 사람의 아이디를 서버로 전송해야 한다. -->
+            <table border="1">
+                <tr>
+                    <td>
+                        <input type="text" id="bookreplytext" name="bookreplytext">
+                        <input type="button" id="bookreplyWrite" value="댓글 입력">
+                        <input type="button" id="bookreplyUpdate" value="댓글 수정">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+
+        <!--댓글 목록창-->
+        <div id="bookreplyDisplay"></div>
+
+
     </div>
 </body>
 </html>

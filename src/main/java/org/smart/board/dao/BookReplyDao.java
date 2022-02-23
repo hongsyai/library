@@ -19,7 +19,7 @@ public interface BookReplyDao {
      * @param bookreply
      * @return
      */
-    public int insert(BookReply ReplyDaoreply);
+    public int insert(BookReply bookreply);
 
     public BookReply findOne(Long bookreplyseq);
     public int delete(Long bookreplyseq);
