@@ -2,6 +2,8 @@ package org.smart.board.service;
 
 import org.smart.board.dao.BoardDao;
 import org.smart.board.entity.Board;
+import org.smart.board.entity.Book;
+import org.smart.board.entity.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,10 +48,20 @@ public class BoardServiceImpl implements  BoardService{
     }
 
     @Override
+    public List<Book> findAll(String searchField, String search_text) {
+        return null;
+    }
+
+    @Override
     public Board findOne(Long boardseq) {
         Board board = boardDao.findOne(boardseq);
 
         return board;
+    }
+
+    @Override
+    public int updateStock(Reservation reservation) {
+        return 0;
     }
 
     @Override

@@ -11,5 +11,6 @@ import java.util.Map;
 public interface BookDao {
     public List<Book> findAll(Map<String, Object> map);
     public Book findOne(Long bookseq);
+    public int updateStock(Reservation reservation);
 
 }

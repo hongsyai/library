@@ -1,15 +1,16 @@
 package org.smart.board.service;
 
 import org.smart.board.entity.Board;
+import org.smart.board.entity.Book;
+import org.smart.board.entity.Reservation;
+
 import java.util.List;
 
 public interface BoardService {
     // 게시글 전체 데이터 가져오기
-    public List<Board> findAll(int srow, int erow, String searchItem, String searchWord);
-    public int insert(Board board);
-    public int delete(Long boardseq);
-    public int update(Board board);
-    public Board findOne(Long boardseq);
-    public int hitCount(Long boardseq);
-    int getBoardCount(String searchItem, String searchWord);
+    public List<Book> findAll(String searchField, String search_text);
+
+    public Book findOne(Long bookseq);
+
+    public int updateStock(Reservation reservation);
 }
