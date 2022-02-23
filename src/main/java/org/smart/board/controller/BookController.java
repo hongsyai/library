@@ -17,7 +17,7 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @GetMapping("/bookList")
+    @GetMapping("/bookSearch")
     public String bookList(@RequestParam(defaultValue="all") String searchField,
                            @RequestParam(defaultValue="") String search_text,
                            Model model){
