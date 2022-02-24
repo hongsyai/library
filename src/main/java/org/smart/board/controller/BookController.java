@@ -5,9 +5,7 @@ import org.smart.board.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @GetMapping("/bookList")
+    @PostMapping("/bookList")
     public String bookList(@RequestParam(defaultValue="all") String searchField,
                            @RequestParam(defaultValue="") String search_text,
                            Model model){
@@ -59,5 +57,18 @@ public class BookController {
         return "book/bookDetail";
 
     }
+
+//    @GetMapping("/bookSearch")
+//    public String bookSearch() {
+//        return "book/bookSearch";
+//    }
+//
+//    @PostMapping("/bookSearch")
+//    @ResponseBody
+//    public List<Book> search_text(String searchField, String search_text) {
+//        List<Book> booklist  = bookService.findAll(searchField, search_text);
+//
+//        return booklist;
+//    }
 
 }

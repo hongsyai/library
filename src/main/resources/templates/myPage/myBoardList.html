@@ -21,18 +21,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
     <div class="container-fluid">
-        <a class="navbar-brand" href="../index.html" th:href="@{/index}">HAPPY LIBRARY</a>
+        <a class="navbar-brand" href="/">HAPPY LIBRARY</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="../index.html" th:href="@{/index}">홈</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../book/bookSearch.html" th:href="@{/book/bookSearch}">자료검색</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link active dropdown-toggle" aria-current="page" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         내 서재
@@ -79,46 +73,6 @@
     </table>
     <br>
     <br>
-    <!-- Pagination -->
-    <!--    <p th:text="${navi}"></p>-->
-    <nav>
-        <p>
-            <!-- 이전 그룹 -->
-            <span th:if="${navi.startPageGroup} <= 1"> &laquo;</span>
-            <span th:unless="${navi.startPageGroup} <= 1">
-                <a href="#" th:href="@{/board/boardList(currentPage=${navi.currentPage-1})}">&laquo;</a>
-            </span>
-
-            <!-- 이전 페이지 -->
-            <span th:if="${navi.currentPage} <= 1">&lt;</span>
-
-            <span th:unless="${navi.currentPage} <= 1">
-                <a href="#" th:href="@{/board/boardList(currentPage=${navi.currentPage-1})}">&lt;</a>
-            </span>
-
-            <!-- 반복 -->
-            <!-- <p th:text="${navi.startPageGroup}"></p> -->
-            <span th:each="currentPage, status : ${#numbers.sequence(navi.startPageGroup, navi.endPageGroup)}">
-                <span style="color:red; font-weight:bold;" th:if="${currentPage} == ${navi.currentPage}" th:text="${currentPage}"></span>
-                <span th:unless="${currentPage} == ${navi.currentPage}">
-                    <a th:href="@{/board/boardList(currentPage=${currentPage}, searchItem=${searchItem}, searchWord=${searchWord})}" th:text="${currentPage}">1</a>
-                </span>
-            </span>
-
-            <!-- 다음 페이지 요청 -->
-            <span th:if="${navi.currentPage} >= ${navi.totalPageCount}">&gt;</span>
-            <span th:unless="${navi.currentPage} >= ${navi.totalPageCount}">
-                <a href="#" th:href="@{/board/boardList(currentPage=${navi.currentPage+1})}">&gt;</a>
-            </span>
-
-            <!-- 다음 그룹 요청 -->
-            <span th:if="${navi.startPageGroup} <= ${navi.totalPageCount}">&raquo;</span>
-            <span th:unless="${navi.startPageGroup} <= ${navi.totalPageCount}">
-                <a href="#" th:href="@{/board/boardList(currentPage=${navi.currentGroup*navi.currentPage + navi.pagePerGroup + 1})}">&raquo;</a>
-            </span>
-        </p>
-    </nav>
-
 </div>
 </body>
 </html>

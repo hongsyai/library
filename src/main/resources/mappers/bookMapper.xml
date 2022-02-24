@@ -3,11 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.smart.board.dao.BookDao">
     <select id="findAll" resultType="Book" parameterType="map">
-        <!--        SELECT b.bookseq as bookseq, b.isbn as isbn, b.booktitle as booktitle,-->
-        <!--                b.writer as writer, b.publisher as publisher, b.descrip as descrip,-->
-        <!--                b.stock as stock, b.bookphoto as bookphoto,-->
-        <!--                r.rvseq as rvseq, r.usrid as usrid, r.returnbook as returnbook-->
-        <!--        FROM book b, reservation r-->
         SELECT
         bookseq,isbn, booktitle, writer, publisher, descrip,stock, bookphoto
         FROM book
@@ -22,7 +17,6 @@
                 WHERE ${searchField} like '%' || #{search_text} || '%'
             </otherwise>
         </choose>
-
     </select>
     <select id="findOne" resultType="Book" parameterType="Long">
         SELECT

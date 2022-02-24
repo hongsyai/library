@@ -30,4 +30,10 @@ public class MemberServiceImpl implements MemberService{
 
         return memberDao.findOne(usrid);
     }
+    @Override
+    public int update(Member member) {
+        int result = memberDao.update(member);
+        return result;
+    }
+
 }
