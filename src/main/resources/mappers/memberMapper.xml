@@ -19,6 +19,5 @@
         usrname = #{usrname}
         , email = #{email}
         WHERE usrid = #{usrid}
-
     </update>
  </mapper>

@@ -26,7 +26,7 @@
 <!--상단-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">HAPPY LIBRARY</a>
+        <a class="navbar-brand" href="/">HAPPY LIBRARY</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,135 +36,32 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">홈</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">> 자료검색</a>
-                </li>
             </ul>
         </div>
     </div>
 </nav>
 <br>
 <br>
-
-<!--자료 검색창-->
-<div class="container mt-3">
-    <h2><b>자료검색</b></h2>
-    <br>
-    <div class="searchBox">
-        <div class="keywordBox">
-            <div class="searchSelect">
-                <select id="searchField" name="searchField" class="searchKey">
-                    <option value="ALL">전체</option>
-                    <option value="TITLE">제목</option>
-                    <option value="AUTHOR">저자</option>
-                    <option value="PUBLISHER">출판사</option>
-                    <option value="KEYWORD">키워드</option>
-                </select>
-                <label for="search_text" class="hidden"></label>
-                <input id="search_text" name="search_text" style="ime-mode:active;" placeholder="검색어를 입력하세요."
-                       type="text" class="text" onfocus="PopupVirtualKeyboard.attachInput(this)" value=""/>
-                <button type="button" class="btn btn-primary">검색</button>
+<div>
+    <div class="sinfo" style="margin-bottom:40px;">
+        <div class="thumb mbImg">
+            <div style="float: left">
+                <img src="https://image.aladin.co.kr/product/24191/64/cover/k562639753_1.jpg"
+                     alt="돈의 속성  : 최상위 부자가 말하는 돈에 대한 모든 것" style="height: 225px">
             </div>
+        </div>
+        <div class="info">
+            <ul>
+                <li style="line-height: 150%;">
+                    <h6 id="bookTitleInfo"><b th:text="${book.booktitle}">&nbsp;&nbsp;돈의 속성 : 최상위 부자가 말하는 돈에 대한 모든 것</b></h6>
+                </li>
+                <li>&nbsp;&nbsp;저자 : 지은이: <b th:text="${book.writer}">Snowfox(스노우폭스북스)</b></li>
+                <li>&nbsp;&nbsp;출판사 : <b th:text="${book.publisher}">Snowfox(스노우폭스북스)</b></li>
+                <li>&nbsp;&nbsp;ISBN :  <b th:text="${book.isbn}">Snowfox(스노우폭스북스)</b></li>
+            </ul>
         </div>
     </div>
 </div>
 
-<br>
-<br>
-<!--검색 결과-->
-<div class="container mt-3">
-    <h4><b>검색 결과</b></h4>
-
-    <!--책 한권, hr까지 포함해서 반복-->
-    <hr>
-    <div class="container mt-3">
-        <div>
-            <div class="sinfo" style="margin-bottom:40px;">
-                <div class="thumb mbImg">
-                    <div style="float: left">
-                        <img src="https://image.aladin.co.kr/product/24191/64/cover/k562639753_1.jpg"
-                             alt="돈의 속성  : 최상위 부자가 말하는 돈에 대한 모든 것" style="height: 150px">
-                    </div>
-                </div>
-                <div class="info">
-                    <ul>
-                        <li style="line-height: 150%;">
-                            <strong>도서.</strong>
-                            <a href="#" vLoca="111003" vCtrl="5527821501" isbn="9791188331796" class="name goDetail">&nbsp;&nbsp;돈의
-                                속성 :
-                                최상위 부자가 말하는 돈에 대한 모든 것</a>
-                        </li>
-                        <li>&nbsp;&nbsp;저자 : 지은이: 김승호</li>
-                        <li>&nbsp;&nbsp;출판사 : Snowfox(스노우폭스북스), 2020</li>
-                        <li>&nbsp;&nbsp;ISBN : 9791188331796</li>
-                        <li>&nbsp;&nbsp;자료상태 : 예약초과(3명예약중)</li>
-                        <li>&nbsp;&nbsp;도서예약불가</li>
-                    </ul>
-                </div>
-            </div>
-            <!--책 두권-->
-            <hr>
-            <div class="container mt-3">
-                <div>
-                    <div class="sinfo" style="margin-bottom:40px;">
-                        <div class="thumb mbImg">
-                            <div style="float: left">
-                                <img src="https://image.aladin.co.kr/product/24191/64/cover/k562639753_1.jpg"
-                                     alt="돈의 속성  : 최상위 부자가 말하는 돈에 대한 모든 것" style="height: 150px">
-                            </div>
-                        </div>
-                        <div class="info">
-                            <ul>
-                                <li style="line-height: 150%;">
-                                    <strong>도서.</strong>
-                                    <a href="#" vLoca="111003" vCtrl="5527821501" isbn="9791188331796"
-                                       class="name goDetail">&nbsp;&nbsp;돈의 속성 :
-                                        최상위 부자가 말하는 돈에 대한 모든 것</a>
-                                </li>
-                                <li>&nbsp;&nbsp;저자 : 지은이: 김승호</li>
-                                <li>&nbsp;&nbsp;출판사 : Snowfox(스노우폭스북스), 2020</li>
-                                <li>&nbsp;&nbsp;ISBN : 9791188331796</li>
-                                <li>&nbsp;&nbsp;자료상태 : 예약초과(3명예약중)</li>
-                                <li>&nbsp;&nbsp;도서예약불가</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--책 두권-->
-                    <hr>
-                    <div class="container mt-3">
-                        <div>
-                            <div class="sinfo" style="margin-bottom:40px;">
-                                <div class="thumb mbImg">
-                                    <div style="float: left">
-                                        <img src="https://image.aladin.co.kr/product/24191/64/cover/k562639753_1.jpg"
-                                             alt="돈의 속성  : 최상위 부자가 말하는 돈에 대한 모든 것" style="height: 150px">
-                                    </div>
-                                </div>
-                                <div class="info">
-                                    <ul>
-                                        <li style="line-height: 150%;">
-                                            <strong>도서.</strong>
-                                            <a href="#" vLoca="111003" vCtrl="5527821501" isbn="9791188331796"
-                                               class="name goDetail">&nbsp;&nbsp;돈의 속성 :
-                                                최상위 부자가 말하는 돈에 대한 모든 것</a>
-                                        </li>
-                                        <li>&nbsp;&nbsp;저자 : 지은이: 김승호</li>
-                                        <li>&nbsp;&nbsp;출판사 : Snowfox(스노우폭스북스), 2020</li>
-                                        <li>&nbsp;&nbsp;ISBN : 9791188331796</li>
-                                        <li>&nbsp;&nbsp;자료상태 : 예약초과(3명예약중)</li>
-                                        <li>&nbsp;&nbsp;도서예약불가</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="page">
-                                << < 1 2 3 4 5 > >>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>

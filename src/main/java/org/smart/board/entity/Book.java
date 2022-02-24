@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class Book {
     private int bookseq;
-    private int isbn;
+    private String isbn;
     private String booktitle;
     private String writer;
     private String publisher;

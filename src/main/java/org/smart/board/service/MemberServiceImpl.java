@@ -35,4 +35,5 @@ public class MemberServiceImpl implements MemberService{
         int result = memberDao.update(member);
         return result;
     }
+
 }

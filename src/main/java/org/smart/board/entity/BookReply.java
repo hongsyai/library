@@ -9,10 +9,10 @@ import lombok.*;
 @Getter
 @ToString
 public class BookReply {
-    private Long replyseq;
-    private Long boardseq;
+    private Long bookreplyseq;
+    private Long bookseq;
     private String usrid;
-    private String replytext;
+    private String bookreplytext;
     private int starcount;
     private String regdate;
 }

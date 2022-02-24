@@ -1,6 +1,7 @@
 package org.smart.board.service;
 
 import org.smart.board.dao.BookDao;
+import org.smart.board.entity.Board;
 import org.smart.board.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,12 @@ public class BookServiceImpl implements BookService{
 
         List<Book> bookList = bookDao.findAll(map);
         return bookList;
+    }
+
+    @Override
+    public Book findOne(Long bookseq) {
+        Book book = bookDao.findOne(bookseq);
+
+        return book;
     }
 }

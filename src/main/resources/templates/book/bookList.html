@@ -29,9 +29,9 @@
 </head>
 <body>
 <!--상단-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">HAPPY LIBRARY</a>
+        <a class="navbar-brand" href="/">HAPPY LIBRARY</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -69,7 +69,7 @@
                     <label for="search_text" class="hidden"></label>
                     <input id="search_text" name="search_text" style="ime-mode:active;" placeholder="검색어를 입력하세요."
                            type="text" class="text" onfocus="PopupVirtualKeyboard.attachInput(this)" th:value="${search_text}"/>
-                    <button type="submit" class="btn btn-dark">검색</button>
+                    <button type="submit" class="btn btn-primary">검색</button>
                 </form>
             </div>
         </div>
@@ -83,8 +83,12 @@
     <h4><b>검색 결과</b></h4>
 
     <!--책 한권, hr까지 포함해서 반복-->
-    <th:block th:each="book, status : ${bookList}">
+    <hr>
+    <div>
+        <h2 th:if="${bookList.isEmpty()}">검색 결과가 없습니다.</h2>
+    </div>
 
+    <th:block th:each="book, status : ${bookList}">
         <hr>
         <div class="container mt-3">
             <div class="sinfo" style="margin-bottom:40px;">
@@ -95,21 +99,24 @@
                     </div>
                 </div>
                 <div class="info">
-                    <input type="hidden"  id="returnBook" name="returnBook" th:value="${book.returnBook}">
+                    <input type="hidden"  id="returnbook" name="returnbook" th:value="${book.returnbook}">
                     <ul>
                         <li style="line-height: 150%;">
                             <strong>도서.</strong>
                             <a href="#" vLoca="111003" vCtrl="5527821501" isbn="9791188331796" class="name goDetail"
-                               th:href="@{/book/bookDetail(boardseq=${book.isbn})}" th:text="${book.booktitle}">&nbsp;&nbsp;돈의
+                               th:href="@{/book/bookDetail(bookseq=${book.bookseq})}" th:text="${book.booktitle}">&nbsp;&nbsp;돈의
                                 속성 :
                                 최상위 부자가 말하는 돈에 대한 모든 것</a>
                         </li>
-                        <li th:text="${book.writer}">&nbsp;&nbsp;저자 : 지은이: 김승호</li>
-                        <li th:text="${book.publisher}">&nbsp;&nbsp;출판사 : Snowfox(스노우폭스북스), 2020</li>
-                        <li th:text="${book.descrip}">&nbsp;&nbsp;ISBN : 9791188331796</li>
-                        <li th:text="${book.isbn}">&nbsp;&nbsp;ISBN : 9791188331796</li>
-                        <li>&nbsp;&nbsp;자료상태 : 예약초과(3명예약중)</li>
-                        <li>&nbsp;&nbsp;도서예약불가</li>
+                        <li>
+                            <strong>저자.</strong>
+                            <span th:text="${book.writer}">저자 : 지은이: 김승호</span>
+                        </li>
+                        <li>&nbsp;&nbsp; <strong>출판사</strong> : <span th:text="${book.publisher}">Snowfox(스노우폭스북스)</span></li>
+                        <li>&nbsp;&nbsp;<strong>ISBN</strong> :  <span th:text="${book.isbn}">Snowfox(스노우폭스북스)</span></li>
+                        <li>&nbsp;&nbsp;<strong>줄거리</strong> :  <span th:text="${book.descrip}">Snowfox(스노우폭스북스)</span></li>
+                        <li th:if="${book.returnbook} == 1">&nbsp;&nbsp;<strong>자료상태</strong> : 대여가능</li>
+                        <li th:unless="${book.returnbook} == 1">&nbsp;&nbsp;<strong>자료상태</strong> : 대여불가능</li>
                     </ul>
                 </div>
             </div>
